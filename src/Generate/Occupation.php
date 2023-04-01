@@ -28,6 +28,9 @@ class Occupation extends AbstractRoute
     public function generate($type = '', $gender = '', $laban = false): array
     {
         $occupation = $this->faker->jobTitle;
-        return ['occupation' => $occupation];
+        return [
+            'tableTitle' => 'Occupation',
+            'occupation' => $occupation
+        ];
     }
 }

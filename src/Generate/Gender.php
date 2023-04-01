@@ -71,7 +71,10 @@ class Gender extends AbstractRoute
 
         $gender = $this->faker->randomElement($genderList);
 
-        return ['gender' => $gender];
+        return [
+            'tableTitle' => 'Gender Identity and/or Expression',
+            'gender' => $gender
+        ];
 
     }
 }
