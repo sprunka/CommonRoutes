@@ -280,7 +280,30 @@ class PhysicalDescription extends AbstractRoute
         ];
 
         // Generate!
+        //Flat chance age is generated first, to initialize the variable.
         $apparentAge = $this->faker->numberBetween(18, 84) . ' years old.';
+
+        //Now, let's try to generate that with a better, weighted range of Ages:
+        $ageWeights = [
+            ['min' => 18, 'max' => 20, 'weight' => 0.33],
+            ['min' => 21, 'max' => 39, 'weight' => 1],
+            ['min' => 40, 'max' => 50, 'weight' => 0.33],
+            ['min' => 51, 'max' => 84, 'weight' => 0.2],
+        ];
+        $randomWeight = mt_rand(1, 100);
+        $totalWeight = array_reduce($ageWeights, function ($carry, $ageRange) {
+            return $carry + $ageRange['weight'];
+        }, 0);
+        $targetWeight = $randomWeight / 100 * $totalWeight;
+        $cumulativeWeight = 0;
+        foreach ($ageWeights as $ageRange) {
+            $cumulativeWeight += $ageRange['weight'];
+            if ($targetWeight <= $cumulativeWeight) {
+                $apparentAge = $this->faker->numberBetween($ageRange['min'], $ageRange['max']) . ' years old.';
+                break;
+            }
+        }
+
         $heightCM = $this->faker->numberBetween(147, 190);
         $heightIN = round($heightCM * 0.393700787);
         $weightKG = $this->faker->numberBetween(45, 100);
@@ -295,7 +318,8 @@ class PhysicalDescription extends AbstractRoute
         $clothingStyle = ucwords($this->faker->randomElement($clothingStyleChoices));
 
         return [
-            'age' => $apparentAge,
+            'tableTitle' => 'Physical Description',
+            'apparentAge' => $apparentAge,
             'height' => $heightCM . ' cm / ' . $heightIN . ' inches.',
             'weight' => $weightKG . ' kg / ' . $weightLB . ' lbs.',
             'bmi' => $bmi,
