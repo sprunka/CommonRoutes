@@ -64,7 +64,7 @@ class Voice extends AbstractRoute
             'Body Size' => ['Small', false, 'Large'],
             'Tempo' => ['Slow', false, 'Fast'],
             'Tone' => [false, 'Friendly', 'Aggressive'],
-            'mpairments' => [false, 'Mild', 'Strong']
+            'Impairments' => [false, 'Mild', 'Strong']
         ];
 
         $addOnsChosen = [];
