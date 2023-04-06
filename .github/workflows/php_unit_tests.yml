@@ -1,14 +1,9 @@
 name: PHP Unit Tests
 
 on:
-  push:
-    branches:
-      - main
-      - master
   pull_request:
     branches:
-      - main
-      - master
+      - deliverable
 
 jobs:
   tests:
