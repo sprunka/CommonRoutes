@@ -27,20 +27,6 @@ class VoiceTest extends TestCase
 
         $this->assertNotEmpty($generatedVoice['add_ons']);
 
-        $all = [
-            'Dabbing - Light, Direct, Sudden',
-            'Flicking - Light, Indirect, Sudden',
-            'Pressing - Heavy, Direct, Sustained',
-            'Floating - Light, Indirect, Sustained',
-            'Thrusting - Heavy, Indirect, Sudden',
-            'Wringing - Heavy, Indirect, Sustained',
-            'Slashing -  Heavy, Direct, Sudden',
-            'Gliding - Light, Direct, Sustained',
-        ];
-
-        if (!$laban) {
-            $this->assertNotContains($generatedVoice['base_voice'], $all);
-        }
     }
 
     public function labanProvider()

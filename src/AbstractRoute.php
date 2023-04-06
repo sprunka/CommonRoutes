@@ -30,11 +30,14 @@ abstract class AbstractRoute
      * @param array $args
      * @return ResponseInterface
      */
-    abstract public function __invoke(
+    public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
         array $args = []
-    ): ResponseInterface;
+    ): ResponseInterface
+    {
+        return $this->outputResponse($response, $this->generate());
+    }
 
     abstract public function generate($type = '', $gender = '', $laban = false): array;
 
