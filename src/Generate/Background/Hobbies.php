@@ -8,17 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 class Hobbies extends \CommonRoutes\AbstractRoute
 {
 
-    /**
-     * @inheritDoc
-     */
-    public function __invoke(
-        ServerRequestInterface $request,
-        ResponseInterface $response,
-        array $args = []
-    ): ResponseInterface {
-        // TODO: Implement __invoke() method.
-    }
-
     public function generate($type = '', $gender = '', $laban = false): array
     {
         $minHobbies = 2;
