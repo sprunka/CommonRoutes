@@ -3,7 +3,7 @@
     "description": "This is an API stub with generators and routes that I use in most APIs.",
     "type": "library",
     "license": "MIT",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "authors": [
         {
             "name": "Sean Prunka",
