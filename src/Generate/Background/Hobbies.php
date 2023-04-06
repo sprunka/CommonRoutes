@@ -131,7 +131,7 @@ class Hobbies extends \CommonRoutes\AbstractRoute
 
         return [
             'tableTitle' => 'Hobbies & Interests',
-            'hobbyList' => $selectedHobbies
+            'hobbyList' => implode(separator: ', ', array: $selectedHobbies)
         ];
 
     }

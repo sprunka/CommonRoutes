@@ -22,7 +22,8 @@ class HobbiesTest extends TestCase
         $this->assertEquals('Hobbies & Interests', $generatedHobbies['tableTitle']);
 
         $this->assertArrayHasKey('hobbyList', $generatedHobbies);
-        $this->assertIsArray($generatedHobbies['hobbyList']);
+        $this->assertIsString($generatedHobbies['hobbyList']);
+        $generatedHobbies['hobbyList'] = explode(separator: ', ',string: $generatedHobbies['hobbyList']);
         $this->assertGreaterThanOrEqual(2, count($generatedHobbies['hobbyList']));
         $this->assertLessThanOrEqual(5, count($generatedHobbies['hobbyList']));
 
